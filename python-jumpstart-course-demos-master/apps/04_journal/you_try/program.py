@@ -28,8 +28,8 @@ def run_event_loop():
             add_entries(journal_data)
         elif cmd != 'X':
             print("Sorry we don't understand '{}'.\n".format(cmd))
-    print('Done, good bye')
     journal.save(journal_name, journal_data)
+    print('Done, good bye')
 
 
 def list_entries(data):
