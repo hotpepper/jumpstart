@@ -15,18 +15,18 @@ def print_header():
 
 def run_event_loop():
     print('what do you want to do with your journal?\n')
-    cmd = None
+    cmd = 'EMTPY'
     journal_name = 'default'
     journal_data = journal.load(journal_name)
 
-    while cmd != 'X':
+    while cmd != 'X' and cmd:
         cmd = input('[L]ist entries, [A]dd entries, E[x]it?\n').upper().strip()
 
         if cmd == 'L':
             list_entries(journal_data)
         elif cmd == 'A':
             add_entries(journal_data)
-        elif cmd != 'X':
+        elif cmd != 'X' and cmd:
             print("Sorry we don't understand '{}'.\n".format(cmd))
     journal.save(journal_name, journal_data)
     print('Done, good bye')
