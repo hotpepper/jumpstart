@@ -28,6 +28,13 @@ def get_html_fom_web(zipcode):
     return response.text
 
 
+def clean_up_text(text : str): # (param : type) => type hints to give vaiable meaning
+    if not text:
+        return text
+    text = text.strip()
+    return text
+
+
 def get_weather_from_html(html):
     cityCss = 'div#location h1'
     weatherConditionCss = 'div#curCond span.wx-value'
@@ -39,6 +46,8 @@ def get_weather_from_html(html):
     condition = soup.find(id='curCond').find(class_='wx-value').get_text()
     temp = soup.find(id='curTemp').find(class_='wx-value').get_text()
     scale = soup.find(id='curTemp').find(class_='wx-unit').get_text()
+    
+    loc = clean_up_text(loc)
     print(condition, temp, scale)
 
 if __name__ == '__main__':
