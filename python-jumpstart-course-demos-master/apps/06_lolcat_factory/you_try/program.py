@@ -1,4 +1,5 @@
 import os
+import cat_service
 
 def get_or_creat_output_folder():
     base_folder = os.path.dirname(__file__)
@@ -11,12 +12,21 @@ def get_or_creat_output_folder():
 
     return full_path
 
+
+def download_cats(folder):
+    cat_count = 8
+    for i in range(1, cat_count+1):
+        name = 'lolcat_{}'.format(i)
+        cat_service.get_cat(folder, name)
+
+
 def main():
     # print header
     print_header()
-    # get or creat folder
+    # get or create folder
     folder = get_or_creat_output_folder()
     # download cats
+    download_cats(folder)
     # display cats
     pass
 
